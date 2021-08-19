@@ -17,8 +17,9 @@ app.use(helmet());
 
 // Set up mongoos connection
 const mongoose = require('mongoose');
-const mongoDB =
+var dev_db_url =
 	'mongodb+srv://saltest1:1234567890@cluster0.jaerj.mongodb.net/local_library?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
